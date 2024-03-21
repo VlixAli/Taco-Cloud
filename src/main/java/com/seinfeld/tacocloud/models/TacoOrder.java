@@ -3,35 +3,46 @@ package com.seinfeld.tacocloud.models;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Data
-public class TacoOrder {
+@Table
+public class TacoOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Id
     private Long id;
 
-    private Date placedAt;
+    private Date placedAt =new Date();
 
     @NotBlank(message = "Delivery name is required")
+    @Size(max = 50, message = "The state shouldn't be more than 50 characters")
     private String deliveryName;
 
     @NotBlank(message = "Street is required")
+    @Size(max = 50, message = "The state shouldn't be more than 50 characters")
     private String deliveryStreet;
 
     @NotBlank(message = "City is required")
+    @Size(max = 50, message = "The state shouldn't be more than 50 characters")
     private String deliveryCity;
 
     @NotBlank(message = "State is required")
+    @Size(max = 20, message = "The state shouldn't be more than 20 characters")
     private String deliveryState;
 
     @NotBlank(message = "Zip code is required")
+    @Size(max = 10, message = "The state shouldn't be more than 10 characters")
     private String deliveryZip;
 
     @CreditCardNumber(message = "Not  a valid credit card number")
