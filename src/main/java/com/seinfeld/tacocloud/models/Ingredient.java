@@ -1,15 +1,14 @@
 package com.seinfeld.tacocloud.models;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.*;
 
 @Data
-@Table
+@Entity
 @AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@RequiredArgsConstructor
 public class Ingredient {
 
     @Id
@@ -17,7 +16,7 @@ public class Ingredient {
     private final String name;
     private final Type type;
 
-    public enum Type{
+    public enum Type {
         WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE
     }
 }
