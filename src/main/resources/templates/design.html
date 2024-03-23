@@ -11,7 +11,7 @@
 <h1>Design your taco!</h1>
 <img th:src="@{/images/TacoCloud.png}"/>
 
-<form method="post" th:object="${taco}">
+<form method="post" th:action="@{/design}" th:object="${taco}">
     <div class="grid">
         <div class="ingredient-group" id="wraps">
             <h3>Designate your wrap:</h3>
@@ -67,7 +67,7 @@
               th:errors="*{name}">name Error</span>
         <br>
 
-        <button>Submit Your Taco</button>
+        <button type="submit">Submit Your Taco</button>
     </div>
 </form>
 </body>
